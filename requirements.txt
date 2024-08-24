@@ -1,4 +1,4 @@
-littellm
+litellm
 pandas
 pyodbc
 streamlit
