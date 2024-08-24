@@ -15,6 +15,8 @@ os.environ['AZURE_API_BASE'] = os.getenv('AZURE_API_BASE')
 os.environ['AZURE_API_VERSION'] = os.getenv('AZURE_API_VERSION')
 # or from sqlalchemy import create_engine
 
+field = ''
+
 # Function to connect to the database
 def get_connection():
     with st.spinner('I am trying to connect to the database. This operation may take a few seconds if the database is paused. Please wait a moment...'):
@@ -61,10 +63,11 @@ def main():
 
     with st.sidebar:
         st.image("https://i.pinimg.com/736x/b8/4b/3a/b84b3a2604e591c53777cd190576ba55--image-search.jpg")   
-        ""
+        
+        field = st.radio("Select the field to seach", ('The News Title', 'The News Content'))
+        
         "[Integrating Azure OpenAI with Native Vector Support in Azure SQL Databases for Advanced Search Capabilities and Data Insights]()"
-        "Vector databases are gaining quite a lot of interest lately. Using text embeddings and vector operations makes extremely easy to find similar “things”. Things can be articles, photos, products…everything. As one can easily imagine, this ability is great to easily implement suggestions in applications. From providing suggestions on similar articles or other products that may be of interest, to quickly finding and grouping similar items, the applications are many."
-        ""
+        "This project demonstrates the integration of Azure OpenAI with Native Vector Support in Azure SQL Database to enable advanced search capabilities. By combining vector embeddings with SQL’s traditional query capabilities, you can perform similarity searches, enhance recommendation systems, and integrate semantic understanding into your applications."
         ""
         "Source: [Global News Dataset](https://www.kaggle.com/datasets/everydaycodings/global-news-dataset/)" 
         ""
@@ -84,8 +87,11 @@ def main():
         #vector = get_embeddings(search_query)
         
         # Definir a stored procedure e a consulta SQL
-        stored_procedure = f"EXEC dbo.SearchNewsVector '{search_query}'"
-
+        if field == 'The News Title':
+            stored_procedure = f"EXEC dbo.SearchNewsVectorTitle '{search_query}'"
+        elif field == 'The News Content':
+            stored_procedure = f"EXEC dbo.SearchNewsVectorContent '{search_query}'"
+        
         # Executar a stored procedure
         cnxn.execute(stored_procedure)
         
@@ -97,7 +103,7 @@ def main():
 
         # Displaying results
         if not df.empty:
-            st.write("Search Results:")
+            st.write("Search Results using " + field + " :")
             st.dataframe(df)
         else:
             st.write("No results found.")
