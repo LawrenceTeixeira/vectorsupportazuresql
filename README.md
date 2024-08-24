@@ -32,8 +32,8 @@ To get started, ensure that your environment is properly set up. Follow the step
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/LawrenceTeixeira/vectorsupportazuresql.git
+cd vectorsupportazuresql
 ```
 
 ### Step 2: Install Dependencies
@@ -57,10 +57,6 @@ DB_DATABASE=<Azure SQL Database Name>
 DB_UID=<Azure SQL Database user>
 DB_PWD=<Azure SQL Database passworkd>
 ```
-
-Alternatively, you can configure these variables in the `config.py` file.
-
----
 
 ## Usage
 
