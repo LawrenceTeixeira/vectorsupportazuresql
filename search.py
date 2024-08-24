@@ -66,7 +66,7 @@ def main():
         
         field = st.radio("Select the field to seach", ('The News Title', 'The News Content'))
         
-        "[Integrating Azure OpenAI with Native Vector Support in Azure SQL Databases for Advanced Search Capabilities and Data Insights]()"
+        "[Integrating Azure OpenAI with Native Vector Support in Azure SQL Databases for Advanced Search Capabilities and Data Insights](https://lawrence.eti.br/2024/08/24/integrating-azure-openai-with-native-vector-support-in-azure-sql-databases-for-advanced-search-capabilities-and-data-insights/)"
         "This project demonstrates the integration of Azure OpenAI with Native Vector Support in Azure SQL Database to enable advanced search capabilities. By combining vector embeddings with SQL’s traditional query capabilities, you can perform similarity searches, enhance recommendation systems, and integrate semantic understanding into your applications."
         ""
         "Source: [Global News Dataset](https://www.kaggle.com/datasets/everydaycodings/global-news-dataset/)" 
