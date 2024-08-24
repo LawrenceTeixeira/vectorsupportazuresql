@@ -19,6 +19,9 @@ Key features include:
 
 ---
 
+## Execute o AutoDoc
+Para executar o Vector Search App click neste link: [Vector Search App](https://vectorsupportazuresql.fly.dev/)
+
 ## Installation
 
 To get started, ensure that your environment is properly set up. Follow the steps below to install the required dependencies.
