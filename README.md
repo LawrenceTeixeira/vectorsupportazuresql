@@ -19,7 +19,7 @@ Key features include:
 
 ---
 
-## Execute o AutoDoc
+## Execute o Vector Search App
 Para executar o Vector Search App click neste link: [Vector Search App](https://vectorsupportazuresql.fly.dev/)
 
 ## Installation
