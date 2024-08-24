@@ -109,22 +109,6 @@ This will start the Streamlit server. Open your web browser and navigate to `htt
 
 ---
 
-## Configuration
-
-Ensure your configuration details are correct before running the project. The key configurations include:
-
-- **Azure SQL Connection String**: Ensure your connection string is set up in the `config.py` file or as an environment variable.
-- **Azure OpenAI API Key**: Ensure your API key for Azure OpenAI is correctly configured.
-
-Example `config.py`:
-
-```python
-SQL_CONNECTION_STRING = "your-azure-sql-connection-string"
-OPENAI_API_KEY = "your-openai-api-key"
-```
-
----
-
 ## Troubleshooting
 
 If you encounter any issues, consider the following:
