@@ -2,12 +2,13 @@
     DESCRIPTION: This stored procedure searches the SimilarNewsContentArticles table using the provided input text. It retrieves the top 10 articles based on the cosine distance between the input text's embedding and the embeddings of the articles' titles and contents.    PARAMETERS:
         - @inputText (NVARCHAR(MAX)): The input text to search for.    RETURNS: None
 */
+/****** Object:  StoredProcedure [dbo].[SearchNewsVector]    Script Date: 8/24/2024 3:12:21 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER PROCEDURE [dbo].[SearchNewsVector] 
+create PROCEDURE [dbo].[SearchNewsVectorContent] 
     @inputText NVARCHAR(MAX)
 AS
 BEGIN
@@ -34,7 +35,7 @@ BEGIN
       ,[title_vector]
       ,[content_vector]
       ,[published]
-      ,VECTOR_DISTANCE('cosine', @e, VectorBinary) AS cosine_distance
+      ,VECTOR_DISTANCE('cosine', @e, VectorBinary_content) AS cosine_distance
 	into result
 	FROM newsvector
 	ORDER BY cosine_distance;
