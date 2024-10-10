@@ -11,10 +11,8 @@
     The table is created on the [PRIMARY] filegroup with the TEXTIMAGE_ON [PRIMARY] option.*/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE TABLE [dbo].[newsvector](
 	[article_id] [int] NOT NULL,
 	[source_id] [nvarchar](50) NULL,
@@ -29,9 +27,16 @@ CREATE TABLE [dbo].[newsvector](
 	[full_content] [nvarchar](max) NULL,
 	[title_vector] [varchar](max) NULL,
 	[content_vector] [varchar](max) NULL,
-	[published] [datetime] NULL,
-    [VectorBinary] [varbinary](8000) NULL
+	[published] [smalldatetime] NULL,
+	[id] [int] NULL,
+	[VectorBinary_title] [varbinary](8000) NULL,
+	[VectorBinary_content] [varbinary](8000) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [idx_id] ON [dbo].[newsvector]
+(
+	[id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 
 
