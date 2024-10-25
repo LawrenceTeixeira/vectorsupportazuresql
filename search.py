@@ -7,7 +7,7 @@ import time
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv('.env')  # Ensure this points to your actual .env file
 
 # Set up OpenAI credentials from environment variables
 os.environ['AZURE_API_KEY'] =os.getenv('AZURE_API_KEY')
