@@ -19,21 +19,31 @@ field = ''
 
 # Function to connect to the database
 def get_connection():
+    db_server = os.getenv("DB_SERVER")
+    db_database = os.getenv("DB_DATABASE")
+    db_uid = os.getenv("DB_UID")
+    db_pwd = os.getenv("DB_PWD")
+
+    if not all([db_server, db_database, db_uid, db_pwd]):
+        st.error("Database connection information is incomplete. Please check your environment variables.")
+        return None
+
     with st.spinner('I am trying to connect to the database. This operation may take a few seconds if the database is paused. Please wait a moment...'):
         while True:
             try:
                 cnxn = pyodbc.connect(
                     f'DRIVER={{ODBC Driver 17 for SQL Server}};'
-                    f'SERVER={os.getenv("DB_SERVER")};'
-                    f'DATABASE={os.getenv("DB_DATABASE")};'
-                    f'UID={os.getenv("DB_UID")};'
-                    f'PWD={os.getenv("DB_PWD")}',
+                    f'SERVER={db_server};'
+                    f'DATABASE={db_database};'
+                    f'UID={db_uid};'
+                    f'PWD={db_pwd}',
                     timeout=5
                 )
                 return cnxn
             except pyodbc.OperationalError:
                 print("Connection failed, retrying in 2 seconds...")
                 time.sleep(2)
+
 
 def get_embeddings(text):
     # Truncate the text to 8000 characters
