@@ -95,7 +95,7 @@ def main():
         # Executar a stored procedure
         cnxn.execute(stored_procedure)
         
-        query = "SELECT r.cosine_distance, r.published, r.category, r.title, r.author, r.full_content, r.url FROM result R order by r.cosine_distance DESC"
+        query = "SELECT r.cosine_distance, r.published, r.category, r.title, r.author, r.full_content, r.url FROM result R order by r.cosine_distance ASC"
 
         # Executing the query
         with st.spinner('Executing the search...'):
